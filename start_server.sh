@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 APP_DIR=~/flask_app
-GIT_REPO=https://github.com/username/flask_app.git
+GIT_REPO=https://github.com/contact474747-ui/flask_app.git
 PYTHON_BIN=python
 LOG_FILE=$APP_DIR/flask.log
 
