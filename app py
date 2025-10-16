@@ -1,0 +1,45 @@
+from flask import Flask, render_template, jsonify, request
+import datetime
+import subprocess
+
+app = Flask(__name__)
+
+# Home page
+@app.route('/')
+def home():
+    return render_template("index.html", message="হ্যালো! Flask চলছে তোমার অ্যান্ড্রয়েডে 😊")
+
+# About page
+@app.route('/about')
+def about():
+    return render_template("about.html", info="এই অ্যাপটি Termux-এ চালানো হয়েছে।")
+
+# API: current time
+@app.route('/api/time')
+def api_time():
+    now = datetime.datetime.now()
+    return jsonify({"status": "success", "current_time": now.strftime("%Y-%m-%d %H:%M:%S")})
+
+# API: greet user
+@app.route('/api/greet', methods=['POST'])
+def api_greet():
+    data = request.get_json()
+    name = data.get("name", "User")
+    return jsonify({"message": f"হ্যালো {name}! Flask API থেকে স্বাগতম 😊"})
+
+# Update app from GitHub
+@app.route('/update', methods=['POST'])
+def update_app():
+    try:
+        result = subprocess.run(
+            ["git", "pull"],
+            cwd="./",  # app.py যেখানে আছে সেই folder
+            capture_output=True,
+            text=True
+        )
+        return {"status": "success", "output": result.stdout}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
