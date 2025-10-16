@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>হোম পেজ</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    
+    <button onclick="showTime()">বর্তমান সময় দেখাও</button>
+    <p id="time"></p>
+
+    <h3>API Greeting</h3>
+    <input type="text" id="name" placeholder="তোমার নাম লিখো">
+    <button onclick="greetUser()">স্বাগতম দেখাও</button>
+    <p id="greet"></p>
+
+    <h3>App Update</h3>
+    <button onclick="updateApp()">Update App from GitHub</button>
+    <p id="updateResult"></p>
+
+    <br><br>
+    <a href="/about">About</a>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
