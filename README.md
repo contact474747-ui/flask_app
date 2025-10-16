@@ -8,5 +8,5 @@ Termux-ready Flask application with auto GitHub pull and Update button.
 1. Download ZIP from GitHub or clone repository:
 
 ```bash
-git clone https://github.com/username/flask_app.git
+
 
